@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header (title)">
+<title th:text="${title}">title</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- jQuery読み込み -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/lib/bootstrap/css/bootstrap.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="style.scss">
+
+<style>
+
+
+input{
+    width:80px!important;
+}
+
+ul {
+    display:inline;
+    padding: 0;
+}
+ul.oyaList > li{
+	background-color: lime;
+}
+ul.koList > li{
+	background-color: yellow;
+}
+ul.magoList > li{
+	background-color: orange;
+}
+
+
+
+li {
+    list-style:none;
+    /*	display:inline;*/
+    border:1px solid red;
+    padding: 5px;
+}
+
+
+
+
+div{
+    display: inline-block;
+    vertical-align: top;
+    font-size:0;
+}
+
+
+
+
+
+input{
+	margin: 2px;
+
+}
+
+</style>
+
+
+</head>
+<body>
+
+
+
+
+<script>
+$(function(){
+
+	//first
+	$(document).on( 'click', '.firstBtn', function(){
+		var li = $(this).closest('li'); // クリックしたbtnの親から、直近の liタグを検索
+		li.after('<li><div><input class="btn btn-default firstBtn" type="button" value="追加" /><input class="btn btn-default firstBtnd" type="button" value="削除" /><input type="text" name="date" value="みかん"></div><div><ul class="magoList"><li><input class="btn btn-default lastBtn" type="button" value="追加" /><input class="btn btn-default lastBtnd" type="button" value="削除" /><input type="text" name="date" value="ぶどう"></li></ul></div></li>')
+
+    });
+	$(document).on( 'click', '.firstBtnd', function(){
+		var li = $(this).closest('li'); // クリックしたbtnの親から、直近の liタグを検索
+		li.remove();
+    });
+
+
+
+
+	//last
+	$(document).on( 'click', '.lastBtn', function(){
+		var li = $(this).closest('li'); // クリックしたbtnの親から、直近の liタグを検索
+		li.after('<li><input class="btn btn-default lastBtn" type="button" value="追加" /><input class="btn btn-default lastBtnd" type="button" value="削除" /><input type="text" name="date" value="ぶどう"></li>')
+
+	});
+	$(document).on( 'click', '.lastBtnd', function(){
+		var li = $(this).closest('li'); // クリックしたbtnの親から、直近の liタグを検索
+		li.remove();
+	});
+
+
+
+
+
+
+});
+
+    </script>
+
+    <div class="container">
+
+
+        <br>
+
+        <ul class="oyaList">
+            <li>
+                <div>
+                    <input type="text" name="date" value="りんご">
+                </div>
+                <div>
+                    <ul class="koList">
+                        <li>
+                            <div>
+                                <input class="btn btn-default firstBtn" type="button" value="追加" />
+                                <input class="btn btn-default firstBtnd" type="button" value="削除" />
+                                <input type="text" name="date" value="みかん">
+                            </div>
+                            <div>
+                                <ul class="magoList">
+                                    <li>
+                                        <input class="btn btn-default lastBtn" type="button" value="追加" />
+                                        <input class="btn btn-default lastBtnd" type="button" value="削除" />
+                                        <input type="text" name="date" value="ぶどう">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+
+
+</body>
+</html>
